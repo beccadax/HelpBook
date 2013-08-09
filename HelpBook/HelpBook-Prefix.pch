@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'HelpBook' target in the 'HelpBook' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

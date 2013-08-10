@@ -9,7 +9,7 @@
 #import <VPPlugin/VPPlugin.h>
 #import "GBSDynamicSubclass.h"
 
-@dyn_class(VPUPaletteViewController) {
+@dyn_interface(VPUPaletteViewController) {
     id _nextResponder;
     NSString *_nibName;
     NSBundle *_nibBundle;
@@ -23,8 +23,6 @@
     id _reserved[2];
     id _vprivate;
 }
-
-@dyn_interface(VPUPaletteViewController)
 
 // NSResponder
 - (void)presentError:(NSError *)error modalForWindow:(NSWindow *)window delegate:(id)delegate didPresentSelector:(SEL)didPresentSelector contextInfo:(void *)contextInfo;

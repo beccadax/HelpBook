@@ -138,6 +138,7 @@
 		84963B0A17B4E68800DA5FF2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GBSHelpBook;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Groundbreaking Software";
 			};
@@ -257,7 +258,6 @@
 		84963B2517B4E68800DA5FF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = /Applications/VoodooPad.app/Contents/MacOS/VoodooPad;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -275,7 +275,6 @@
 		84963B2617B4E68800DA5FF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = /Applications/VoodooPad.app/Contents/MacOS/VoodooPad;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

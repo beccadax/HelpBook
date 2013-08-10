@@ -25,6 +25,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2013 Groundbreaking Software. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string></string>
+	<string>GBSHelpBookPlugin</string>
 </dict>
 </plist>

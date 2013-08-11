@@ -11,6 +11,8 @@
 
 @interface GBSHelpBookPlugin: VPPlugin
 
++ (BOOL)writeHelpBookFromDocument:(id <VPPluginDocument>)document toURL:(NSURL*)URL error:(NSError**)error;
+
 + (NSURL*)outputURLForDocument:(id<VPPluginDocument>)doc;
 + (void)setOutputURL:(NSURL*)outputURL forDocument:(id <VPPluginDocument>)doc;
 

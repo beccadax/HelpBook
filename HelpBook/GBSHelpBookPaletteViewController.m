@@ -8,7 +8,6 @@
 
 #import "GBSHelpBookPaletteViewController.h"
 #import "GBSHelpBookPlugin.h"
-#import "GBSHelpBookWriter.h"
 
 @dynamic_implementation(VPUPaletteViewController)
 
@@ -63,24 +62,14 @@
             return;
         }
         
-        [GBSHelpBookPlugin setOutputURL:panel.URL forDocument:self.currentDocument];
-        
-        GBSHelpBookWriter * writer = [GBSHelpBookWriter new];
-        
-        writer.document = self.currentDocument;
-        
-        writer.bundleIdentifier = self.bundleIdentifier;
-        writer.bundleName = self.bundleName;
-        writer.helpBookTitle = self.helpBookTitle ?: [NSString stringWithFormat:NSLocalizedString(@"%@ Help", @""), self.bundleName];
-        writer.locale = self.localeName;
-        
         NSError * error;
         
-        if(![writer writeToURL:panel.URL error:&error]) {
+        if([GBSHelpBookPlugin writeHelpBookFromDocument:self.currentDocument toURL:panel.URL error:&error]) {
+            [GBSHelpBookPlugin setOutputURL:panel.URL forDocument:self.currentDocument];
+        }
+        else {
             [self presentError:error];
         }
-        
-        [self documentDidChange];
     }];
 }
 

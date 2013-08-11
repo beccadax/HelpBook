@@ -8,6 +8,7 @@
 
 #import "GBSHelpBookPlugin.h"
 #import "GBSHelpBookPaletteViewController.h"
+#import "GBSHelpBookWriter.h"
 
 static NSString * const GBSHelpBookOutputURLKey = @"GBSHelpBook.outputURL";
 static NSString * const GBSHelpBookBundleNameKey = @"GBSHelpBook.bundleName";
@@ -25,6 +26,19 @@ static NSString * const GBSHelpBookLocaleNameKey = @"GBSHelpBook.localeName";
 
 - (void)didRegister {
     [(id)self.pluginManager registerPaletteViewController:GBSHelpBookPaletteViewController.class];
+}
+
++ (BOOL)writeHelpBookFromDocument:(id<VPPluginDocument>)document toURL:(NSURL *)URL error:(NSError *__autoreleasing *)error {
+    GBSHelpBookWriter * writer = [GBSHelpBookWriter new];
+    
+    writer.document = document;
+    
+    writer.bundleIdentifier = [self bundleIdentifierForDocument:document];
+    writer.bundleName = [self bundleNameForDocument:document];
+    writer.helpBookTitle = [self helpBookTitleForDocument:document] ?: [NSString stringWithFormat:NSLocalizedString(@"%@ Help", @""), writer.bundleName];
+    writer.locale = [self localeNameForDocument:document];
+    
+    return [writer writeToURL:URL error:error];
 }
 
 + (NSURL *)outputURLForDocument:(id<VPPluginDocument>)doc {

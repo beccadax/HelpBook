@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Groundbreaking Software. All rights reserved.
 //
 
-#import "GBSDynamicSubclass.h"
+#import "GBSDynamicClass.h"
 #import <objc/runtime.h>
 
 @interface NSObject (DynamicClassesHaveThese)

@@ -7,7 +7,7 @@
 //
 
 #import <VPPlugin/VPPlugin.h>
-#import "GBSDynamicSubclass.h"
+#import "GBSDynamicClass.h"
 
 @interface dynamic_class(VPUPaletteViewController) : NSViewController {
     id _vprivate;

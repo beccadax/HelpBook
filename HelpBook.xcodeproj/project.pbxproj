@@ -13,7 +13,7 @@
 		84963B2B17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B2A17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m */; };
 		84963B2F17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B2D17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m */; };
 		84963B3017B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */; };
-		84963B3517B5BC7C00DA5FF2 /* GBSDynamicSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3417B5BC7C00DA5FF2 /* GBSDynamicSubclass.m */; };
+		84963B3517B5BC7C00DA5FF2 /* GBSDynamicClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3417B5BC7C00DA5FF2 /* GBSDynamicClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +31,8 @@
 		84963B2C17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSHelpBookPaletteViewController.h; sourceTree = "<group>"; };
 		84963B2D17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSHelpBookPaletteViewController.m; sourceTree = "<group>"; };
 		84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GBSHelpBookPaletteViewController.xib; sourceTree = "<group>"; };
-		84963B3117B5B1E200DA5FF2 /* VoodooPad */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = VoodooPad; path = ../../../../../../Applications/VoodooPad.app/Contents/MacOS/VoodooPad; sourceTree = "<group>"; };
-		84963B3317B5BC7C00DA5FF2 /* GBSDynamicSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSDynamicSubclass.h; sourceTree = "<group>"; };
-		84963B3417B5BC7C00DA5FF2 /* GBSDynamicSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSDynamicSubclass.m; sourceTree = "<group>"; };
+		84963B3317B5BC7C00DA5FF2 /* GBSDynamicClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSDynamicClass.h; sourceTree = "<group>"; };
+		84963B3417B5BC7C00DA5FF2 /* GBSDynamicClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSDynamicClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +51,6 @@
 		84963B0917B4E68800DA5FF2 = {
 			isa = PBXGroup;
 			children = (
-				84963B3117B5B1E200DA5FF2 /* VoodooPad */,
 				84963B1B17B4E68800DA5FF2 /* HelpBook */,
 				84963B1417B4E68800DA5FF2 /* Frameworks */,
 				84963B1317B4E68800DA5FF2 /* Products */,
@@ -96,8 +94,8 @@
 				84963B2C17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.h */,
 				84963B2D17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m */,
 				84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */,
-				84963B3317B5BC7C00DA5FF2 /* GBSDynamicSubclass.h */,
-				84963B3417B5BC7C00DA5FF2 /* GBSDynamicSubclass.m */,
+				84963B3317B5BC7C00DA5FF2 /* GBSDynamicClass.h */,
+				84963B3417B5BC7C00DA5FF2 /* GBSDynamicClass.m */,
 			);
 			path = HelpBook;
 			sourceTree = "<group>";
@@ -178,7 +176,7 @@
 			files = (
 				84963B2B17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m in Sources */,
 				84963B2F17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m in Sources */,
-				84963B3517B5BC7C00DA5FF2 /* GBSDynamicSubclass.m in Sources */,
+				84963B3517B5BC7C00DA5FF2 /* GBSDynamicClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

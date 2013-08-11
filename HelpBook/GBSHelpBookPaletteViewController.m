@@ -8,6 +8,7 @@
 
 #import "GBSHelpBookPaletteViewController.h"
 #import "GBSHelpBookPlugin.h"
+#import "GBSHelpBookWriter.h"
 
 @dynamic_implementation(VPUPaletteViewController)
 
@@ -46,25 +47,6 @@
 }
 
 - (void)export:(id)sender {
-    NSRunAlertPanel(@"Surprise!!!!", @"This plugin doesn't do anything useful yet!", @"Drat", nil, nil);
-}
-
-- (void)documentDidChange {
-//    [super documentDidChange];
-    
-    self.hasDocument = (self.currentDocument != nil);
-    
-    NSURL * outputURL = [GBSHelpBookPlugin outputURLForDocument:self.currentDocument];
-    self.exportFileString = outputURL.path;
-    
-    self.canExport = (outputURL != nil);
-}
-
-- (void)chooseOutputFile:(id)sender {
-    if (!self.currentDocument) {
-        return;
-    }
-    
     NSSavePanel * panel = [NSSavePanel savePanel];
     panel.allowedFileTypes = @[ @"help" ];
     
@@ -80,8 +62,42 @@
         }
         
         [GBSHelpBookPlugin setOutputURL:panel.URL forDocument:self.currentDocument];
+        
+        GBSHelpBookWriter * writer = [GBSHelpBookWriter new];
+        
+        writer.document = self.currentDocument;
+        
+        writer.bundleIdentifier = @"com.groundbreakingsoftware.typesetter.help";
+        writer.bundleName = @"Typesetter";
+        writer.helpBookTitle = @"Typesetter Help";
+        writer.locale = @"en";
+        
+        NSError * error;
+        
+        if(![writer writeToURL:panel.URL error:&error]) {
+            [self presentError:error];
+        }
+        
         [self documentDidChange];
     }];
+}
+
+- (void)documentDidChange {
+//    [super documentDidChange];
+    
+    self.hasDocument = (self.currentDocument != nil);
+    
+    NSURL * outputURL = [GBSHelpBookPlugin outputURLForDocument:self.currentDocument];
+    self.exportFileString = outputURL.path;
+    
+    self.canExport = YES;
+}
+
+- (void)chooseOutputFile:(id)sender {
+    if (!self.currentDocument) {
+        return;
+    }
+    
 }
 
 @end

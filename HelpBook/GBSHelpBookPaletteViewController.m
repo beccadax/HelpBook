@@ -14,6 +14,8 @@
 
 @interface GBSHelpBookPaletteViewController ()
 
+@property id <VPPluginDocument> visibleDocument;
+
 @end
 
 @implementation GBSHelpBookPaletteViewController
@@ -67,10 +69,10 @@
         
         writer.document = self.currentDocument;
         
-        writer.bundleIdentifier = @"com.groundbreakingsoftware.typesetter.help";
-        writer.bundleName = @"Typesetter";
-        writer.helpBookTitle = @"Typesetter Help";
-        writer.locale = @"en";
+        writer.bundleIdentifier = self.bundleIdentifier;
+        writer.bundleName = self.bundleName;
+        writer.helpBookTitle = self.helpBookTitle ?: [NSString stringWithFormat:NSLocalizedString(@"%@ Help", @""), self.bundleName];
+        writer.locale = self.localeName;
         
         NSError * error;
         
@@ -83,21 +85,71 @@
 }
 
 - (void)documentDidChange {
-//    [super documentDidChange];
-    
-    self.hasDocument = (self.currentDocument != nil);
-    
-    NSURL * outputURL = [GBSHelpBookPlugin outputURLForDocument:self.currentDocument];
-    self.exportFileString = outputURL.path;
-    
-    self.canExport = YES;
+    self.visibleDocument = self.currentDocument;
 }
 
-- (void)chooseOutputFile:(id)sender {
-    if (!self.currentDocument) {
-        return;
-    }
-    
++ (NSSet *)keyPathsForValuesAffectingHasDocument {
+    return [NSSet setWithObject:@"visibleDocument"];
+}
+
+- (BOOL)hasDocument {
+    return self.visibleDocument != nil;
+}
+
++ (NSSet *)keyPathsForValuesAffectingBundleName {
+    return [NSSet setWithObject:@"visibleDocument"];
+}
+
+- (NSString *)bundleName {
+    return [GBSHelpBookPlugin bundleNameForDocument:self.visibleDocument];
+}
+
+- (void)setBundleName:(NSString *)bundleName {
+    [GBSHelpBookPlugin setBundleName:bundleName forDocument:self.visibleDocument];
+}
+
++ (NSSet *)keyPathsForValuesAffectingBundleIdentifier {
+    return [NSSet setWithObject:@"visibleDocument"];
+}
+
+- (NSString *)bundleIdentifier {
+    return [GBSHelpBookPlugin bundleIdentifierForDocument:self.visibleDocument];
+}
+
+- (void)setBundleIdentifier:(NSString *)bundleIdentifier {
+    [GBSHelpBookPlugin setBundleIdentifier:bundleIdentifier forDocument:self.visibleDocument];
+}
+
++ (NSSet *)keyPathsForValuesAffectingHelpBookTitle {
+    return [NSSet setWithObject:@"visibleDocument"];
+}
+
+- (NSString *)helpBookTitle {
+    return [GBSHelpBookPlugin helpBookTitleForDocument:self.visibleDocument];
+}
+
+- (void)setHelpBookTitle:(NSString *)helpBookTitle {
+    [GBSHelpBookPlugin setHelpBookTitle:helpBookTitle forDocument:self.visibleDocument];
+}
+
++ (NSSet *)keyPathsForValuesAffectingLocaleName {
+    return [NSSet setWithObject:@"visibleDocument"];
+}
+
+- (NSString *)localeName {
+    return [GBSHelpBookPlugin localeNameForDocument:self.visibleDocument];
+}
+
+- (void)setLocaleName:(NSString *)localeName {
+    [GBSHelpBookPlugin setLocaleName:localeName forDocument:self.visibleDocument];
+}
+
++ (NSSet *)keyPathsForValuesAffectingCanExport {
+    return [NSSet setWithArray:@[ @"bundleName", @"bundleIdentifier", @"localeName" ]];
+}
+
+- (BOOL)canExport {
+    return self.bundleName && self.bundleIdentifier && self.localeName;
 }
 
 @end

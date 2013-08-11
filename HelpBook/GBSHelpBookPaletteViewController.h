@@ -29,12 +29,14 @@
 
 @interface GBSHelpBookPaletteViewController : dynamic_class(VPUPaletteViewController)
 
-@property (assign) BOOL hasDocument;
+@property (readonly) BOOL hasDocument;
 
-@property (assign) BOOL canExport;
+@property (copy) NSString * bundleIdentifier;
+@property (copy) NSString * bundleName;
+@property (copy) NSString * helpBookTitle;
+@property (copy) NSString * localeName;
+
+@property (readonly) BOOL canExport;
 - (IBAction)export:(id)sender;
-
-@property (strong) NSString * exportFileString;
-- (IBAction)chooseOutputFile:(id)sender;
 
 @end

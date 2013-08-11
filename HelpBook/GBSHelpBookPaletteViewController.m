@@ -54,10 +54,7 @@
     
     self.hasDocument = (self.currentDocument != nil);
     
-    NSURL * outputURL;
-    if(![GBSHelpBookPlugin getOutputURL:&outputURL forDocument:self.currentDocument error:NULL]) {
-        outputURL = nil;
-    }
+    NSURL * outputURL = [GBSHelpBookPlugin outputURLForDocument:self.currentDocument];
     self.exportFileString = outputURL.path;
     
     self.canExport = (outputURL != nil);
@@ -71,14 +68,10 @@
     NSSavePanel * panel = [NSSavePanel savePanel];
     panel.allowedFileTypes = @[ @"help" ];
     
-    NSURL * outputURL;
-    NSError * error;
-    if([GBSHelpBookPlugin getOutputURL:&outputURL forDocument:self.currentDocument error:&error]) {
+    NSURL * outputURL = [GBSHelpBookPlugin outputURLForDocument:self.currentDocument];
+    if(outputURL) {
         panel.directoryURL = outputURL.URLByDeletingLastPathComponent;
         panel.nameFieldStringValue = outputURL.lastPathComponent;
-    }
-    else {
-        [self presentError:error];
     }
     
     [panel beginWithCompletionHandler:^(NSInteger result) {
@@ -86,13 +79,8 @@
             return;
         }
         
-        NSError * error;
-        if([GBSHelpBookPlugin setOutputURL:panel.URL forDocument:self.currentDocument error:&error]) {
-            [self documentDidChange];
-        }
-        else {
-            [self presentError:error];
-        }
+        [GBSHelpBookPlugin setOutputURL:panel.URL forDocument:self.currentDocument];
+        [self documentDidChange];
     }];
 }
 

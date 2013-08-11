@@ -16,7 +16,6 @@
 + (NSString*)displayName;
 - (NSImage*)pickerImage;
 
-// VPUPaletteViewController
 - (id<VPPluginDocument>)currentDocument;
 - (id<VPPluginWindowController>)currentWindowController;
 - (id<VPData>)currentItem;

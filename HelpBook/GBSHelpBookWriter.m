@@ -97,6 +97,11 @@ static NSString * const GBSVPWebExportControllerLinkedItemKeysKey = @"linkedItem
     
     for(NSString * uuid in uuids) {
         id <VPData> page = [self.document pageForUUID:uuid];
+        
+        if(page.skipOnExport || !page.isText) {
+            continue;
+        }
+        
         NSDictionary * exportedPage = [self.webExportController renderItem:page options:@{}];
         NSMutableString * HTML = [exportedPage[GBSVPWebExportControllerOutputKey] mutableCopy];
         

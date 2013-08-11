@@ -86,6 +86,7 @@ static NSString * const GBSVPWebExportControllerLinkedItemKeysKey = @"linkedItem
     if(!lprojWrapper) {
         return nil;
     }
+    
     lprojWrapper.preferredFilename = [self.locale stringByAppendingPathExtension:@"lproj"];
     [wrapper addFileWrapper:lprojWrapper];
     
@@ -106,7 +107,7 @@ static NSString * const GBSVPWebExportControllerLinkedItemKeysKey = @"linkedItem
         NSMutableString * HTML = [exportedPage[GBSVPWebExportControllerOutputKey] mutableCopy];
         
         if([page.key isEqualToString:[(id)self.document valueForKey:@"defaultPageName"]]) {
-            NSString * metaTags = [NSString stringWithFormat:@"<meta name=\"AppleTitle\" content=\"%@\"><meta name=\"AppleIcon\" content=\"appicon16.png\">", self.helpBookTitle];
+            NSString * metaTags = [NSString stringWithFormat:@"<meta name=\"AppleTitle\" content=\"%@\"><meta name=\"AppleIcon\" content=\"appicon16.png\"></head>", self.helpBookTitle];
             [HTML replaceOccurrencesOfString:@"</head>" withString:metaTags options:0 range:NSMakeRange(0, HTML.length)];
         }
         

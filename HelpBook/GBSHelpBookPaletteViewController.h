@@ -9,7 +9,7 @@
 #import <VPPlugin/VPPlugin.h>
 #import "GBSDynamicSubclass.h"
 
-@dyn_interface(VPUPaletteViewController) {
+@dynamic_interface(VPUPaletteViewController) {
     id _nextResponder;
     NSString *_nibName;
     NSBundle *_nibBundle;
@@ -52,7 +52,7 @@
 
 @end
 
-@interface GBSHelpBookPaletteViewController : dyn_superclass(VPUPaletteViewController)
+@interface GBSHelpBookPaletteViewController : dynamic_superclass(VPUPaletteViewController)
 
 @property (assign) BOOL hasDocument;
 

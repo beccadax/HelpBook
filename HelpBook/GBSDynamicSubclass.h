@@ -22,15 +22,15 @@
 @end
 
 // Use this whenever you want to refer to the superclass.
-#define dyn_superclass(superclassName) GBSDynamicSubclassOf##superclassName
+#define dynamic_superclass(superclassName) GBSDynamicSubclassOf##superclassName
 
 // Declare a @dyn_interface(superclassName). Include any superclass methods you want to call before the matching @end. If you want to have ivars (including synthesized properties) in your subclass, make sure the dyn_interface's ivar layout matches the real superclass's.
-#define dyn_interface(className) interface dyn_superclass(className) : GBSDynamicSubclass
+#define dynamic_interface(className) interface dynamic_superclass(className) : GBSDynamicSubclass
 
 // Use this in the .m file matching the @dyn_interface. No need for an @end.
-#define dyn_implementation(className) implementation \
+#define dynamic_implementation(className) implementation \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wincomplete-implementation\"") \
-dyn_superclass(className) + (NSString*)dynamicSuperclassName { return @#className; } \
+dynamic_superclass(className) + (NSString*)dynamicSuperclassName { return @#className; } \
 @end \
 _Pragma("clang diagnostic pop") 

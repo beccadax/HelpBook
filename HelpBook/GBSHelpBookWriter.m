@@ -64,7 +64,7 @@ static NSString * const GBSVPWebExportControllerLinkedItemKeysKey = @"linkedItem
     return @{
              @"CFBundleDevelopmentRegion": self.locale,
              @"CFBundleIdentifier": self.bundleIdentifier,
-             @"CFBundleInfoDictionaryVersion": @6.0,
+             @"CFBundleInfoDictionaryVersion": @"6.0",
              @"CFBundleName": self.bundleName,
              @"CFBundlePackageType": @"BNDL",
              @"CFBundleShortVersionString": @"1",
@@ -74,7 +74,7 @@ static NSString * const GBSVPWebExportControllerLinkedItemKeysKey = @"linkedItem
 //             @"HPDBookIconPath": ...,
              @"HPDBookIndexPath": GBSHelpIndexName,
              @"HPDBookTitle": self.helpBookTitle,
-             @"HPDBookType": @3,
+             @"HPDBookType": @"3",
              };
 }
 

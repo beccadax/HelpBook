@@ -9,48 +9,43 @@
 #import "GBSDynamicSubclass.h"
 #import <objc/runtime.h>
 
-@implementation GBSDynamicSubclass
+@interface NSObject (DynamicClassesHaveThese)
 
-+ (NSString *)dynamicSuperclassName {
-    return nil;
-}
+- (Class)staticClass;
+- (Class)dynamicClass;
 
-+ (Class)class {
-    return [self dynamicClassForStaticClass:self];
-}
+@end
 
-+ (id)allocWithZone:(NSZone *)zone {
-    return [[self class] allocWithZone:zone];
-}
+static void GBSCopyFromStaticClassToDynamicClass(Class staticClass, Class dynamicClass);
 
-+ (Class)dynamicClassForStaticClass:(Class)staticClass {
-    NSString * dynamicClassName = [@"GBSDynamicSubclass_" stringByAppendingString:NSStringFromClass(staticClass)];
+Class GBSDynamicClassForStaticClass(Class staticClass) {
+    NSString * dynamicClassName = [@"GBSDynamicClass_" stringByAppendingString:NSStringFromClass(staticClass)];
     Class dynamicClass = NSClassFromString(dynamicClassName);
     if(dynamicClass) {
         return dynamicClass;
     }
     
-    if(staticClass.superclass == objc_getClass("GBSDynamicSubclass") || staticClass == objc_getClass("GBSDynamicSubclass")) {
-        return nil;
+    if([staticClass staticClass] == staticClass) {
+        return [staticClass dynamicClass];
     }
     
-    Class superclass = [self dynamicClassForStaticClass:staticClass.superclass];
+    Class superclass = GBSDynamicClassForStaticClass([staticClass superclass]);
     if(!superclass) {
-        superclass = NSClassFromString(staticClass.dynamicSuperclassName);
+        superclass = [staticClass dynamicClass];
     }
     
-    size_t extraBytes = class_getInstanceSize(staticClass) - class_getInstanceSize(staticClass.superclass);
+    size_t extraBytes = class_getInstanceSize(staticClass) - class_getInstanceSize([staticClass superclass]);
     dynamicClass = objc_allocateClassPair(superclass, dynamicClassName.UTF8String, extraBytes);
     
-    [self copyFromStaticClass:staticClass toDynamicClass:dynamicClass];
-    [self copyFromStaticClass:object_getClass(staticClass) toDynamicClass:object_getClass(dynamicClass)];
+    GBSCopyFromStaticClassToDynamicClass(staticClass, dynamicClass);
+    GBSCopyFromStaticClassToDynamicClass(object_getClass(staticClass), object_getClass(dynamicClass));
     
     objc_registerClassPair(dynamicClass);
     
     return dynamicClass;
 }
 
-+ (void)copyFromStaticClass:(Class)staticClass toDynamicClass:(Class)dynamicClass {
+static void GBSCopyFromStaticClassToDynamicClass(Class staticClass, Class dynamicClass) {
     unsigned int count;
     
     Ivar * ivars = class_copyIvarList(staticClass, &count);
@@ -91,5 +86,3 @@
     }
     free(protocols);
 }
-
-@end

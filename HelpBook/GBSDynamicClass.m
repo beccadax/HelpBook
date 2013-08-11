@@ -11,8 +11,8 @@
 
 @interface NSObject (DynamicClassesHaveThese)
 
-- (Class)staticClass;
-- (Class)dynamicClass;
+- (Class)gbs_staticClassForDynamicClass;
+- (Class)gbs_specifiedDynamicClass;
 
 @end
 
@@ -25,13 +25,13 @@ Class GBSDynamicClassForStaticClass(Class staticClass) {
         return dynamicClass;
     }
     
-    if([staticClass staticClass] == staticClass) {
-        return [staticClass dynamicClass];
+    if([staticClass gbs_staticClassForDynamicClass] == staticClass) {
+        return [staticClass gbs_specifiedDynamicClass];
     }
     
     Class superclass = GBSDynamicClassForStaticClass([staticClass superclass]);
     if(!superclass) {
-        superclass = [staticClass dynamicClass];
+        superclass = [staticClass gbs_specifiedDynamicClass];
     }
     
     size_t extraBytes = class_getInstanceSize(staticClass) - class_getInstanceSize([staticClass superclass]);

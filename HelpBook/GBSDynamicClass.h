@@ -21,12 +21,15 @@
 // Use this whenever you want to refer to the class.
 #define dynamic_class(className) GBSStaticClass_##className
 
-// Use this in a .m file. No need for an @end.
+// Use this in a .m file. Match it with an @end. The only use for anything between the two is if you need to declare a property @dynamic.
 #define dynamic_implementation(className) implementation \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wincomplete-implementation\"") \
-dynamic_class(className) + (Class)dynamicClass { return NSClassFromString(@#className); } + (Class)staticClass { return NSClassFromString(@"GBSStaticClass_"#className); } + (Class)class { return GBSDynamicClassForStaticClass(self); } + (instancetype)allocWithZone:(NSZone*)zone { return [[self class] allocWithZone:zone]; } \
-@end \
+dynamic_class(className) \
++ (Class)gbs_specifiedDynamicClass { return NSClassFromString(@#className); } \
++ (Class)gbs_staticClassForDynamicClass { return NSClassFromString(@"GBSStaticClass_"#className); } \
++ (Class)class { return GBSDynamicClassForStaticClass(self); } \
++ (instancetype)allocWithZone:(NSZone*)zone { return [[self class] allocWithZone:zone]; } \
 _Pragma("clang diagnostic pop") 
 
 // Returns the runtime class object represented by the passed-in compile time class object.

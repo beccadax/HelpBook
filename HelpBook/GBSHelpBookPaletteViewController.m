@@ -11,6 +11,8 @@
 
 @dynamic_implementation(VPUPaletteViewController)
 
+@end
+
 @interface GBSHelpBookPaletteViewController ()
 
 @property id <VPPluginDocument> visibleDocument;

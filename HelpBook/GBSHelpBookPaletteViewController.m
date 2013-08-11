@@ -9,7 +9,7 @@
 #import "GBSHelpBookPaletteViewController.h"
 #import "GBSHelpBookPlugin.h"
 
-@dynamic_implementation(VPUPaletteViewController)
+@placeholder_implementation(VPUPaletteViewController)
 
 @end
 

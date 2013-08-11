@@ -7,9 +7,9 @@
 //
 
 #import <VPPlugin/VPPlugin.h>
-#import "GBSDynamicClass.h"
+#import "GBSPlaceholderClass.h"
 
-@interface dynamic_class(VPUPaletteViewController) : NSViewController {
+@interface placeholder_class(VPUPaletteViewController) : NSViewController {
     id _vprivate;
 }
 
@@ -27,7 +27,7 @@
 
 @end
 
-@interface GBSHelpBookPaletteViewController : dynamic_class(VPUPaletteViewController)
+@interface GBSHelpBookPaletteViewController : placeholder_class(VPUPaletteViewController)
 
 @property (readonly) BOOL hasDocument;
 

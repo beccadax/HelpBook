@@ -13,7 +13,7 @@
 		84963B2B17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B2A17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m */; };
 		84963B2F17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B2D17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m */; };
 		84963B3017B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */; };
-		84963B3517B5BC7C00DA5FF2 /* GBSDynamicClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3417B5BC7C00DA5FF2 /* GBSDynamicClass.m */; };
+		84963B3517B5BC7C00DA5FF2 /* GBSPlaceholderClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3417B5BC7C00DA5FF2 /* GBSPlaceholderClass.m */; };
 		84963B3917B75D6400DA5FF2 /* GBSHelpBookWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3717B754C600DA5FF2 /* GBSHelpBookWriter.m */; };
 		84963B3C17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3B17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m */; };
 		84963B3F17B7644900DA5FF2 /* NSURL+UTI.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3E17B7644900DA5FF2 /* NSURL+UTI.m */; };
@@ -34,8 +34,8 @@
 		84963B2C17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSHelpBookPaletteViewController.h; sourceTree = "<group>"; };
 		84963B2D17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSHelpBookPaletteViewController.m; sourceTree = "<group>"; };
 		84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GBSHelpBookPaletteViewController.xib; sourceTree = "<group>"; };
-		84963B3317B5BC7C00DA5FF2 /* GBSDynamicClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSDynamicClass.h; sourceTree = "<group>"; };
-		84963B3417B5BC7C00DA5FF2 /* GBSDynamicClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSDynamicClass.m; sourceTree = "<group>"; };
+		84963B3317B5BC7C00DA5FF2 /* GBSPlaceholderClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSPlaceholderClass.h; sourceTree = "<group>"; };
+		84963B3417B5BC7C00DA5FF2 /* GBSPlaceholderClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSPlaceholderClass.m; sourceTree = "<group>"; };
 		84963B3617B754C600DA5FF2 /* GBSHelpBookWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSHelpBookWriter.h; sourceTree = "<group>"; };
 		84963B3717B754C600DA5FF2 /* GBSHelpBookWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSHelpBookWriter.m; sourceTree = "<group>"; };
 		84963B3A17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+URLForTemporaryItem.h"; sourceTree = "<group>"; };
@@ -105,8 +105,8 @@
 				84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */,
 				84963B3617B754C600DA5FF2 /* GBSHelpBookWriter.h */,
 				84963B3717B754C600DA5FF2 /* GBSHelpBookWriter.m */,
-				84963B3317B5BC7C00DA5FF2 /* GBSDynamicClass.h */,
-				84963B3417B5BC7C00DA5FF2 /* GBSDynamicClass.m */,
+				84963B3317B5BC7C00DA5FF2 /* GBSPlaceholderClass.h */,
+				84963B3417B5BC7C00DA5FF2 /* GBSPlaceholderClass.m */,
 				84963B3A17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.h */,
 				84963B3B17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m */,
 				84963B3D17B7644900DA5FF2 /* NSURL+UTI.h */,
@@ -191,7 +191,7 @@
 			files = (
 				84963B2B17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m in Sources */,
 				84963B2F17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m in Sources */,
-				84963B3517B5BC7C00DA5FF2 /* GBSDynamicClass.m in Sources */,
+				84963B3517B5BC7C00DA5FF2 /* GBSPlaceholderClass.m in Sources */,
 				84963B3917B75D6400DA5FF2 /* GBSHelpBookWriter.m in Sources */,
 				84963B3C17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m in Sources */,
 				84963B3F17B7644900DA5FF2 /* NSURL+UTI.m in Sources */,

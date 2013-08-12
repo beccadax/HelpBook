@@ -15,6 +15,7 @@
 @property NSString * helpBookTitle;
 @property NSString * bundleName;
 @property NSString * bundleIdentifier;
+@property NSString * bundleVersion;
 @property NSString * locale;
 
 - (BOOL)writeToURL:(NSURL*)URL error:(NSError**)error;

@@ -9,6 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import <VPPlugin/VPPlugin.h>
 
+extern NSString * const GBSHelpBookPluginWillIncreaseBundleVersionAutomaticallyNotification;
+extern NSString * const GBSHelpBookPluginDidIncreaseBundleVersionAutomaticallyNotification;
+
 @interface GBSHelpBookPlugin: VPPlugin
 
 + (BOOL)writeHelpBookFromDocument:(id <VPPluginDocument>)document toURL:(NSURL*)URL error:(NSError**)error;
@@ -27,5 +30,11 @@
 
 + (NSString*)localeNameForDocument:(id<VPPluginDocument>)doc;
 + (void)setLocaleName:(NSString*)localeName forDocument:(id <VPPluginDocument>)doc;
+
++ (NSString*)bundleVersionForDocument:(id<VPPluginDocument>)doc;
++ (void)setBundleVersion:(NSString*)localeName forDocument:(id <VPPluginDocument>)doc;
+
++ (BOOL)increasesBundleVersionManuallyForDocument:(id<VPPluginDocument>)doc;
++ (void)setIncreasesBundleVersionManually:(BOOL)increasesManually forDocument:(id <VPPluginDocument>)doc;
 
 @end

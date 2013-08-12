@@ -35,6 +35,8 @@
 @property (copy) NSString * bundleName;
 @property (copy) NSString * helpBookTitle;
 @property (copy) NSString * localeName;
+@property (copy) NSString * bundleVersion;
+@property (assign) BOOL increasesBundleVersionAutomatically;
 
 @property (readonly) BOOL canExport;
 - (IBAction)export:(id)sender;

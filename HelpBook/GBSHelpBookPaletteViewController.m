@@ -76,7 +76,25 @@
 }
 
 - (void)documentDidChange {
+    if(self.visibleDocument) {
+        [NSNotificationCenter.defaultCenter removeObserver:self name:GBSHelpBookPluginWillIncreaseBundleVersionAutomaticallyNotification object:self.visibleDocument];
+        [NSNotificationCenter.defaultCenter removeObserver:self name:GBSHelpBookPluginDidIncreaseBundleVersionAutomaticallyNotification object:self.visibleDocument];
+    }
+    
     self.visibleDocument = self.currentDocument;
+    
+    if(self.visibleDocument) {
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(willIncreaseBundleVersion:) name:GBSHelpBookPluginWillIncreaseBundleVersionAutomaticallyNotification object:self.visibleDocument];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(didIncreaseBundleVersion:) name:GBSHelpBookPluginDidIncreaseBundleVersionAutomaticallyNotification object:self.visibleDocument];
+    }
+}
+
+- (void)willIncreaseBundleVersion:(NSNotification*)note {
+    [self willChangeValueForKey:@"bundleVersion"];
+}
+
+- (void)didIncreaseBundleVersion:(NSNotification*)note {
+    [self didChangeValueForKey:@"bundleVersion"];
 }
 
 + (NSSet *)keyPathsForValuesAffectingHasDocument {
@@ -133,6 +151,30 @@
 
 - (void)setLocaleName:(NSString *)localeName {
     [GBSHelpBookPlugin setLocaleName:localeName forDocument:self.visibleDocument];
+}
+
++ (NSSet *)keyPathsForValuesAffectingBundleVersion {
+    return [NSSet setWithObject:@"visibleDocument"];
+}
+
+- (NSString *)bundleVersion {
+    return [GBSHelpBookPlugin bundleVersionForDocument:self.visibleDocument];
+}
+
+- (void)setBundleVersion:(NSString *)bundleVersion {
+    [GBSHelpBookPlugin setBundleVersion:bundleVersion forDocument:self.visibleDocument];
+}
+
++ (NSSet *)keyPathsForValuesAffectingIncreasesBundleVersionAutomatically {
+    return [NSSet setWithObject:@"visibleDocument"];
+}
+
+- (BOOL)increasesBundleVersionAutomatically {
+    return ![GBSHelpBookPlugin increasesBundleVersionManuallyForDocument:self.visibleDocument];
+}
+
+- (void)setIncreasesBundleVersionAutomatically:(BOOL)increasesBundleVersionAutomatically {
+    [GBSHelpBookPlugin setIncreasesBundleVersionManually:!increasesBundleVersionAutomatically forDocument:self.visibleDocument];
 }
 
 + (NSSet *)keyPathsForValuesAffectingCanExport {

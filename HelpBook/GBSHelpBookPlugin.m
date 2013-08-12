@@ -10,11 +10,16 @@
 #import "GBSHelpBookPaletteViewController.h"
 #import "GBSHelpBookWriter.h"
 
+NSString * const GBSHelpBookPluginWillIncreaseBundleVersionAutomaticallyNotification = @"GBSHelpBookPluginWillIncreaseBundleVersionAutomatically";
+NSString * const GBSHelpBookPluginDidIncreaseBundleVersionAutomaticallyNotification = @"GBSHelpBookPluginDidIncreaseBundleVersionAutomatically";
+
 static NSString * const GBSHelpBookOutputURLKey = @"GBSHelpBook.outputURL";
 static NSString * const GBSHelpBookBundleNameKey = @"GBSHelpBook.bundleName";
 static NSString * const GBSHelpBookBundleIdentifierKey = @"GBSHelpBook.bundleIdentifier";
 static NSString * const GBSHelpBookHelpBookTitleKey = @"GBSHelpBook.helpBookTitle";
 static NSString * const GBSHelpBookLocaleNameKey = @"GBSHelpBook.localeName";
+static NSString * const GBSHelpBookBundleVersionKey = @"GBSHelpBook.bundleVersion";
+static NSString * const GBSHelpBookIncreasesBundleVersionManuallyKey = @"GBSHelpBook.increasesBundleVersionManually";
 
 @interface NSObject (VPPluginManagerCurrentlyPrivate)
 
@@ -37,8 +42,43 @@ static NSString * const GBSHelpBookLocaleNameKey = @"GBSHelpBook.localeName";
     writer.bundleName = [self bundleNameForDocument:document];
     writer.helpBookTitle = [self helpBookTitleForDocument:document] ?: [NSString stringWithFormat:NSLocalizedString(@"%@ Help", @""), writer.bundleName];
     writer.locale = [self localeNameForDocument:document];
+    writer.bundleVersion = [self bundleVersionForDocument:document] ?: @"0.00.1";
     
-    return [writer writeToURL:URL error:error];
+    BOOL ok = [writer writeToURL:URL error:error];
+    
+    if(ok && ![self increasesBundleVersionManuallyForDocument:document]) {
+        [NSNotificationCenter.defaultCenter postNotificationName:GBSHelpBookPluginWillIncreaseBundleVersionAutomaticallyNotification object:document];
+        NSMutableString * version = [writer.bundleVersion mutableCopy];
+        BOOL done = NO;
+        
+        // We loop backwards through the string, looking for a digit we can increment.
+        for(NSInteger i = version.length - 1; !done && i >= 0; i--) {
+            unichar ch = [version characterAtIndex:i];
+            if(ch >= '0' && ch <= '8') {
+                // This digit can be incremented without carrying.
+                ch += 1;
+                [version replaceCharactersInRange:NSMakeRange(i, 1) withString:[NSString stringWithCharacters:(const unichar []){ ch } length:1]];
+                done = YES;
+            }
+            else if(ch == '9') {
+                // This digit needs to change, but we'll have a 1 to carry. We'll zero this digit and keep looking.
+                [version replaceCharactersInRange:NSMakeRange(i, 1) withString:@"0"];
+            }
+            else {
+                // This is something else, probably a decimal point. Ignore it.
+            }
+        }
+        
+        if(!done) {
+            // We didn't find a usable digit before we ran out of string, so let's add one.
+            [version insertString:@"1" atIndex:0];
+        }
+        
+        [self setBundleVersion:version.copy forDocument:document];
+        [NSNotificationCenter.defaultCenter postNotificationName:GBSHelpBookPluginDidIncreaseBundleVersionAutomaticallyNotification object:document];
+    }
+    
+    return ok;
 }
 
 + (NSURL *)outputURLForDocument:(id<VPPluginDocument>)doc {
@@ -79,6 +119,22 @@ static NSString * const GBSHelpBookLocaleNameKey = @"GBSHelpBook.localeName";
 
 + (void)setLocaleName:(NSString*)localeName forDocument:(id <VPPluginDocument>)doc {
     [doc setExtraObject:localeName forKey:GBSHelpBookLocaleNameKey];
+}
+
++ (NSString*)bundleVersionForDocument:(id<VPPluginDocument>)doc {
+    return [doc extraObjectForKey:GBSHelpBookBundleVersionKey];
+}
+
++ (void)setBundleVersion:(NSString *)localeName forDocument:(id<VPPluginDocument>)doc {
+    [doc setExtraObject:localeName forKey:GBSHelpBookBundleVersionKey];
+}
+
++ (BOOL)increasesBundleVersionManuallyForDocument:(id<VPPluginDocument>)doc {
+    return [[doc extraObjectForKey:GBSHelpBookIncreasesBundleVersionManuallyKey] boolValue];
+}
+
++ (void)setIncreasesBundleVersionManually:(BOOL)increasesManually forDocument:(id<VPPluginDocument>)doc {
+    [doc setExtraObject:@(increasesManually) forKey:GBSHelpBookIncreasesBundleVersionManuallyKey];
 }
 
 @end

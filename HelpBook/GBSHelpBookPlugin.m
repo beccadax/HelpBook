@@ -31,6 +31,23 @@ static NSString * const GBSHelpBookIncreasesBundleVersionManuallyKey = @"GBSHelp
 
 - (void)didRegister {
     [(id)self.pluginManager registerPaletteViewController:GBSHelpBookPaletteViewController.class];
+    [self.pluginManager registerPluginAppleScriptName:@"Export Help Book" target:self action:@selector(exportHelpBook:)];
+}
+
+- (void)exportHelpBookViaAppleScript:(id <VPPluginWindowController>)windowController withProperties:(NSDictionary*)props {
+    id <VPPluginDocument> document = windowController.document;
+    
+    NSURL * url = props[@"destination"] ? [NSURL fileURLWithPath:props[@"destination"]] : [self.class outputURLForDocument:document];
+    
+    NSError * error;
+    if(![self.class writeHelpBookFromDocument:document toURL:url error:&error]) {
+        [(NSWindowController*)windowController presentError:error];
+    }
+}
+
+- (void)exportHelpBook:(id)sender {
+    // Dummy method
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 + (BOOL)writeHelpBookFromDocument:(id<VPPluginDocument>)document toURL:(NSURL *)URL error:(NSError *__autoreleasing *)error {

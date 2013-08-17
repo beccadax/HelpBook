@@ -97,7 +97,6 @@
 		84963B1B17B4E68800DA5FF2 /* HelpBook */ = {
 			isa = PBXGroup;
 			children = (
-				84963B1C17B4E68800DA5FF2 /* Supporting Files */,
 				84963B2917B4E6E300DA5FF2 /* GBSHelpBookPlugin.h */,
 				84963B2A17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m */,
 				84963B2C17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.h */,
@@ -111,6 +110,7 @@
 				84963B3B17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m */,
 				84963B3D17B7644900DA5FF2 /* NSURL+UTI.h */,
 				84963B3E17B7644900DA5FF2 /* NSURL+UTI.m */,
+				84963B1C17B4E68800DA5FF2 /* Supporting Files */,
 			);
 			path = HelpBook;
 			sourceTree = "<group>";
@@ -324,6 +324,7 @@
 				84963B2617B4E68800DA5FF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

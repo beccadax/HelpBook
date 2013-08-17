@@ -9,10 +9,18 @@
 /* Begin PBXBuildFile section */
 		84963B1617B4E68800DA5FF2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84963B1517B4E68800DA5FF2 /* Cocoa.framework */; };
 		84963B2017B4E68800DA5FF2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84963B1E17B4E68800DA5FF2 /* InfoPlist.strings */; };
+		84963B2817B4E69E00DA5FF2 /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84963B2717B4E69E00DA5FF2 /* VPPlugin.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		84963B2B17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B2A17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m */; };
+		84963B2F17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B2D17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m */; };
+		84963B3017B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */; };
+		84963B3517B5BC7C00DA5FF2 /* GBSPlaceholderClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3417B5BC7C00DA5FF2 /* GBSPlaceholderClass.m */; };
+		84963B3917B75D6400DA5FF2 /* GBSHelpBookWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3717B754C600DA5FF2 /* GBSHelpBookWriter.m */; };
+		84963B3C17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3B17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m */; };
+		84963B3F17B7644900DA5FF2 /* NSURL+UTI.m in Sources */ = {isa = PBXBuildFile; fileRef = 84963B3E17B7644900DA5FF2 /* NSURL+UTI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		84963B1217B4E68800DA5FF2 /* HelpBook.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelpBook.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		84963B1217B4E68800DA5FF2 /* HelpBook.vpplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelpBook.vpplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		84963B1517B4E68800DA5FF2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		84963B1817B4E68800DA5FF2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		84963B1917B4E68800DA5FF2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -20,6 +28,20 @@
 		84963B1D17B4E68800DA5FF2 /* HelpBook-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelpBook-Info.plist"; sourceTree = "<group>"; };
 		84963B1F17B4E68800DA5FF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84963B2117B4E68800DA5FF2 /* HelpBook-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelpBook-Prefix.pch"; sourceTree = "<group>"; };
+		84963B2717B4E69E00DA5FF2 /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VPPlugin.framework; sourceTree = "<group>"; };
+		84963B2917B4E6E300DA5FF2 /* GBSHelpBookPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSHelpBookPlugin.h; sourceTree = "<group>"; };
+		84963B2A17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSHelpBookPlugin.m; sourceTree = "<group>"; };
+		84963B2C17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSHelpBookPaletteViewController.h; sourceTree = "<group>"; };
+		84963B2D17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSHelpBookPaletteViewController.m; sourceTree = "<group>"; };
+		84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GBSHelpBookPaletteViewController.xib; sourceTree = "<group>"; };
+		84963B3317B5BC7C00DA5FF2 /* GBSPlaceholderClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSPlaceholderClass.h; sourceTree = "<group>"; };
+		84963B3417B5BC7C00DA5FF2 /* GBSPlaceholderClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSPlaceholderClass.m; sourceTree = "<group>"; };
+		84963B3617B754C600DA5FF2 /* GBSHelpBookWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBSHelpBookWriter.h; sourceTree = "<group>"; };
+		84963B3717B754C600DA5FF2 /* GBSHelpBookWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBSHelpBookWriter.m; sourceTree = "<group>"; };
+		84963B3A17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+URLForTemporaryItem.h"; sourceTree = "<group>"; };
+		84963B3B17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+URLForTemporaryItem.m"; sourceTree = "<group>"; };
+		84963B3D17B7644900DA5FF2 /* NSURL+UTI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+UTI.h"; sourceTree = "<group>"; };
+		84963B3E17B7644900DA5FF2 /* NSURL+UTI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+UTI.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84963B1617B4E68800DA5FF2 /* Cocoa.framework in Frameworks */,
+				84963B2817B4E69E00DA5FF2 /* VPPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,7 +69,7 @@
 		84963B1317B4E68800DA5FF2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84963B1217B4E68800DA5FF2 /* HelpBook.bundle */,
+				84963B1217B4E68800DA5FF2 /* HelpBook.vpplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +77,7 @@
 		84963B1417B4E68800DA5FF2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84963B2717B4E69E00DA5FF2 /* VPPlugin.framework */,
 				84963B1517B4E68800DA5FF2 /* Cocoa.framework */,
 				84963B1717B4E68800DA5FF2 /* Other Frameworks */,
 			);
@@ -73,6 +97,19 @@
 		84963B1B17B4E68800DA5FF2 /* HelpBook */ = {
 			isa = PBXGroup;
 			children = (
+				84963B2917B4E6E300DA5FF2 /* GBSHelpBookPlugin.h */,
+				84963B2A17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m */,
+				84963B2C17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.h */,
+				84963B2D17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m */,
+				84963B2E17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib */,
+				84963B3617B754C600DA5FF2 /* GBSHelpBookWriter.h */,
+				84963B3717B754C600DA5FF2 /* GBSHelpBookWriter.m */,
+				84963B3317B5BC7C00DA5FF2 /* GBSPlaceholderClass.h */,
+				84963B3417B5BC7C00DA5FF2 /* GBSPlaceholderClass.m */,
+				84963B3A17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.h */,
+				84963B3B17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m */,
+				84963B3D17B7644900DA5FF2 /* NSURL+UTI.h */,
+				84963B3E17B7644900DA5FF2 /* NSURL+UTI.m */,
 				84963B1C17B4E68800DA5FF2 /* Supporting Files */,
 			);
 			path = HelpBook;
@@ -105,7 +142,7 @@
 			);
 			name = HelpBook;
 			productName = HelpBook;
-			productReference = 84963B1217B4E68800DA5FF2 /* HelpBook.bundle */;
+			productReference = 84963B1217B4E68800DA5FF2 /* HelpBook.vpplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -114,6 +151,7 @@
 		84963B0A17B4E68800DA5FF2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GBSHelpBook;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Groundbreaking Software";
 			};
@@ -140,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84963B2017B4E68800DA5FF2 /* InfoPlist.strings in Resources */,
+				84963B3017B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +189,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84963B2B17B4E6E300DA5FF2 /* GBSHelpBookPlugin.m in Sources */,
+				84963B2F17B4E7E900DA5FF2 /* GBSHelpBookPaletteViewController.m in Sources */,
+				84963B3517B5BC7C00DA5FF2 /* GBSPlaceholderClass.m in Sources */,
+				84963B3917B75D6400DA5FF2 /* GBSHelpBookWriter.m in Sources */,
+				84963B3C17B7616600DA5FF2 /* NSFileManager+URLForTemporaryItem.m in Sources */,
+				84963B3F17B7644900DA5FF2 /* NSURL+UTI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,12 +275,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelpBook/HelpBook-Prefix.pch";
 				INFOPLIST_FILE = "HelpBook/HelpBook-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = vpplugin;
 			};
 			name = Debug;
 		};
@@ -243,12 +292,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelpBook/HelpBook-Prefix.pch";
 				INFOPLIST_FILE = "HelpBook/HelpBook-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = vpplugin;
 			};
 			name = Release;
 		};
@@ -271,6 +324,7 @@
 				84963B2617B4E68800DA5FF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
